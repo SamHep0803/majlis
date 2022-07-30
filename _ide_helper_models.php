@@ -19,6 +19,8 @@ namespace App\Models{
  * @property string $name The name of the FIR, e.g Emirates ACC
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\User[] $users
+ * @property-read int|null $users_count
  * @method static \Illuminate\Database\Eloquent\Builder|FlightInformationRegion newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|FlightInformationRegion newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|FlightInformationRegion query()
@@ -27,9 +29,6 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|FlightInformationRegion whereIdentifier($value)
  * @method static \Illuminate\Database\Eloquent\Builder|FlightInformationRegion whereName($value)
  * @method static \Illuminate\Database\Eloquent\Builder|FlightInformationRegion whereUpdatedAt($value)
- * @mixin \Eloquent
- * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\User[] $users
- * @property-read int|null $users_count
  */
 	class FlightInformationRegion extends \Eloquent {}
 }
@@ -39,10 +38,12 @@ namespace App\Models{
  * App\Models\Role
  *
  * @property int $id
- * @property string $key A unique key for identifying the role.
+ * @property \App\Enums\RoleKey $key A unique key for identifying the role.
  * @property string $description A description/name for the role.
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\User[] $users
+ * @property-read int|null $users_count
  * @method static \Illuminate\Database\Eloquent\Builder|Role newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Role newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Role query()
@@ -51,9 +52,6 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|Role whereId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Role whereKey($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Role whereUpdatedAt($value)
- * @mixin \Eloquent
- * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\User[] $users
- * @property-read int|null $users_count
  */
 	class Role extends \Eloquent {}
 }
@@ -89,7 +87,6 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|User whereRoleId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|User whereToken($value)
  * @method static \Illuminate\Database\Eloquent\Builder|User whereUpdatedAt($value)
- * @mixin \Eloquent
  */
 	class User extends \Eloquent implements \Filament\Models\Contracts\FilamentUser {}
 }
