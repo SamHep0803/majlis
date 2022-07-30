@@ -1,0 +1,19 @@
+{
+    "name": "socialiteproviders/vatsimconnect",
+    "description": "VatsimConnect OAuth2 Provider for Laravel Socialite",
+    "license": "MIT",
+    "authors": [{
+        "name": "Samuel Hepworth",
+        "email": "samhep0803@gmail.com"
+    }],
+    "require": {
+        "php": "^7.2",
+        "socialiteproviders/manager": "^4.0",
+        "ext-json": "*"
+    },
+    "autoload": {
+        "psr-4": {
+            "SocialiteProviders\\VatsimConnect\\": ""
+        }
+    }
+}
