@@ -19,7 +19,9 @@ class FlightInformationRegionResource extends Resource
 {
   protected static ?string $model = FlightInformationRegion::class;
 
-  protected static ?string $navigationIcon = 'heroicon-o-collection';
+  protected static ?string $navigationGroup = "Admin";
+
+  protected static ?string $navigationIcon = 'heroicon-o-folder';
 
   public static function form(Form $form): Form
   {

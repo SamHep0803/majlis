@@ -44,12 +44,15 @@ class FlightInformationRegionsRelationManager extends RelationManager
         //
       ])
       ->headerActions([
-        Tables\Actions\CreateAction::make(),
+        Tables\Actions\CreateAction::make()
+          ->label("New Flight Information Region"),
         Tables\Actions\AttachAction::make()
+          ->label("Add User to FIR")
       ])
       ->actions([
         Tables\Actions\EditAction::make(),
-        Tables\Actions\DetachAction::make(),
+        Tables\Actions\DetachAction::make()
+          ->label("Remove"),
         Tables\Actions\DeleteAction::make(),
       ])
       ->bulkActions([

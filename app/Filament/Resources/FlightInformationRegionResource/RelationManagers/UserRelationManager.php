@@ -24,16 +24,19 @@ class UserRelationManager extends RelationManager
       ->columns([
         Tables\Columns\TextColumn::make('name'),
         BadgeColumn::make('role.description')
-          ->enum(RoleKey::cases())
+          ->enum(RoleKey::cases()),
+        Tables\Columns\TagsColumn::make('flightInformationRegions.identifier'),
       ])
       ->filters([
         //
       ])
       ->headerActions([
-        Tables\Actions\AttachAction::make(),
+        Tables\Actions\AttachAction::make()
+          ->label("Add User to FIR"),
       ])
       ->actions([
-        Tables\Actions\DetachAction::make(),
+        Tables\Actions\DetachAction::make()
+          ->label("Remove"),
       ])
       ->bulkActions([
         Tables\Actions\DetachBulkAction::make(),
