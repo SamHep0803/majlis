@@ -2,17 +2,24 @@
 
 namespace App\Filament\Resources\UserResource\RelationManagers;
 
+use App\Models\FlightInformationRegion;
 use Filament\Forms;
 use Filament\Resources\Form;
 use Filament\Resources\RelationManagers\RelationManager;
 use Filament\Resources\Table;
 use Filament\Tables;
+use Illuminate\Support\Collection;
 
 class FlightInformationRegionsRelationManager extends RelationManager
 {
   protected static string $relationship = 'flightInformationRegions';
 
-  protected static ?string $recordTitleAttribute = 'name';
+  protected static ?string $recordTitleAttribute = 'identifier';
+
+  private static function setFirOptions(Collection $firs)
+  {
+    return $firs->mapWithKeys(fn (FlightInformationRegion $fir) => [$fir->id => $fir->identifierName]);
+  }
 
   public static function form(Form $form): Form
   {
@@ -47,7 +54,16 @@ class FlightInformationRegionsRelationManager extends RelationManager
         Tables\Actions\CreateAction::make()
           ->label("New Flight Information Region"),
         Tables\Actions\AttachAction::make()
-          ->label("Add User to FIR")
+          ->form(fn (Form $form): array => [
+            Forms\Components\Select::make('flight_information_region_id')
+              ->label("Flight Information Region")
+              ->searchable()
+              ->options(
+                self::setFirOptions(
+                  FlightInformationRegion::all()
+                )
+              )
+          ])
       ])
       ->actions([
         Tables\Actions\EditAction::make(),

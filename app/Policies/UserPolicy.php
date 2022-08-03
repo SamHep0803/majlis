@@ -67,7 +67,11 @@ class UserPolicy
         if ($user->id === $model->id) {
           return false;
         }
-        return $model->role->key !== RoleKey::SYS;
+        return in_array($model->role->key, [
+          RoleKey::VACC_STAFF,
+          RoleKey::EVENT,
+          RoleKey::USER
+        ]);
     }
 
     return false;

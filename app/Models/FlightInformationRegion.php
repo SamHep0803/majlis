@@ -25,4 +25,11 @@ class FlightInformationRegion extends Model
       set: fn ($value) => strtoupper($value)
     );
   }
+
+  protected function identifierName(): Attribute
+  {
+    return new Attribute(
+      fn () => "{$this->identifier} | {$this->name}"
+    );
+  }
 }

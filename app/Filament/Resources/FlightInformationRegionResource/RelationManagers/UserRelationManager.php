@@ -32,6 +32,7 @@ class UserRelationManager extends RelationManager
       ])
       ->headerActions([
         Tables\Actions\AttachAction::make()
+          ->color('primary')
           ->label("Add User to FIR"),
       ])
       ->actions([
