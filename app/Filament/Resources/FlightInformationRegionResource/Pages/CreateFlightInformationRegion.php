@@ -3,7 +3,6 @@
 namespace App\Filament\Resources\FlightInformationRegionResource\Pages;
 
 use App\Filament\Resources\FlightInformationRegionResource;
-use Filament\Pages\Actions;
 use Filament\Resources\Pages\CreateRecord;
 
 class CreateFlightInformationRegion extends CreateRecord

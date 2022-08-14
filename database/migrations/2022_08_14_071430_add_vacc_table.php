@@ -13,13 +13,15 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('roles', function (Blueprint $table) {
+        Schema::create('vaccs', function (Blueprint $table) {
             $table->id();
-            $table->string('key')
-        ->unique()
-        ->comment('A unique key for identifying the role.');
-            $table->string('description')
-        ->comment('A description/name for the role.');
+            $table->boolean('isMENA')
+                ->default(false);
+            $table->string('code')
+                ->unique()
+                ->comment('A unique code for identifiying the vACC.');
+            $table->string('name')
+                ->comment('The full name of the vACC.');
             $table->timestamps();
         });
     }
@@ -31,6 +33,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('roles');
+        Schema::dropIfExists('vaccs');
     }
 };

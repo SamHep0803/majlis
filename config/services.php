@@ -32,9 +32,9 @@ return [
     ],
 
     'vatsimconnect' => [
-      'host' => env('VATSIMCONNECT_HOST'),
-      'client_id' => env('VATSIMCONNECT_CLIENT_ID'),
-      'client_secret' => env('VATSIMCONNECT_CLIENT_SECRET'),
-      'redirect' => env('VATSIMCONNECT_CALLBACK_URL'),
-    ]
+        'host' => env('VATSIMCONNECT_HOST'),
+        'client_id' => env('VATSIMCONNECT_CLIENT_ID'),
+        'client_secret' => env('VATSIMCONNECT_CLIENT_SECRET'),
+        'redirect' => env('VATSIMCONNECT_CALLBACK_URL'),
+    ],
 ];

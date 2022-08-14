@@ -8,17 +8,17 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Role extends Model
 {
-  protected $fillable = [
-    "key",
-    "description"
-  ];
+    protected $fillable = [
+        'key',
+        'description',
+    ];
 
-  protected $casts = [
-    "key" => RoleKey::class,
-  ];
+    protected $casts = [
+        'key' => RoleKey::class,
+    ];
 
-  public function users(): HasMany
-  {
-    return $this->hasMany(User::class);
-  }
+    public function users(): HasMany
+    {
+        return $this->hasMany(User::class);
+    }
 }

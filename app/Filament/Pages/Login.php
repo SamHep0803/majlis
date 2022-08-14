@@ -14,19 +14,20 @@ use Livewire\Component;
  */
 class Login extends Component implements HasForms
 {
-  use InteractsWithForms;
+    use InteractsWithForms;
 
-  public function authenticate(): ?LoginResponse
-  {
-    $this->redirectRoute('vatsimconnect.redirect');
-    return null;
-  }
+    public function authenticate(): ?LoginResponse
+    {
+        $this->redirectRoute('vatsimconnect.redirect');
 
-  public function render(): View
-  {
-    return view('login')
+        return null;
+    }
+
+    public function render(): View
+    {
+        return view('login')
       ->layout('filament::components.layouts.base', [
-        'title' => __('filament::login.title'),
+          'title' => __('filament::login.title'),
       ]);
-  }
+    }
 }

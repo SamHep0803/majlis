@@ -15,14 +15,14 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware(RedirectIfAuthenticated::class)->get("/", function () {
-  return to_route("filament.auth.login");
+Route::middleware(RedirectIfAuthenticated::class)->get('/', function () {
+    return to_route('filament.auth.login');
 });
 
 Route::middleware(['guest'])->group(function () {
-  Route::get("/auth/redirect", function () {
-    return Socialite::driver("vatsimconnect")->redirect();
-  })->name("vatsimconnect.redirect");
+    Route::get('/auth/redirect', function () {
+        return Socialite::driver('vatsimconnect')->redirect();
+    })->name('vatsimconnect.redirect');
 
-  Route::get("/auth/callback", [VatsimConnectController::class, "callback"]);
+    Route::get('/auth/callback', [VatsimConnectController::class, 'callback']);
 });
