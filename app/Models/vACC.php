@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+
 use function strtoupper;
 
 class vACC extends Model
@@ -20,7 +21,7 @@ class vACC extends Model
 
     public function flight_information_regions(): HasMany
     {
-        return $this->hasMany(FlightInformationRegion::class);
+        return $this->hasMany(FlightInformationRegion::class, "vacc_id");
     }
 
     public function users(): BelongsTo
@@ -28,7 +29,7 @@ class vACC extends Model
         return $this->belongsTo(User::class);
     }
 
-    public function code(): IlluminateAttribute
+    public function code(): Attribute
     {
         return Attribute::make(
             get: fn ($value) => strtoupper($value),

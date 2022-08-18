@@ -3,11 +3,11 @@
 namespace App\Policies;
 
 use App\Enums\RoleKey;
+use App\Models\FlightInformationRegion;
 use App\Models\User;
-use App\Models\vACC;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
-class VACCPolicy
+class FlightInformationRegionPolicy
 {
     use HandlesAuthorization;
 
@@ -30,10 +30,10 @@ class VACCPolicy
      * Determine whether the user can view the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\vACC  $vACC
+     * @param  \App\Models\FlightInformationRegion  $flightInformationRegion
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function view(User $user, vACC $vACC)
+    public function view(User $user, FlightInformationRegion $flightInformationRegion)
     {
         return in_array($user->role->key, [
             RoleKey::SYS,
@@ -57,10 +57,10 @@ class VACCPolicy
      * Determine whether the user can update the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\vACC  $vACC
+     * @param  \App\Models\FlightInformationRegion  $flightInformationRegion
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function update(User $user, vACC $vACC)
+    public function update(User $user, FlightInformationRegion $flightInformationRegion)
     {
         return in_array($user->role->key, [RoleKey::SYS]);
     }
@@ -69,10 +69,10 @@ class VACCPolicy
      * Determine whether the user can delete the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\vACC  $vACC
+     * @param  \App\Models\FlightInformationRegion  $flightInformationRegion
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function delete(User $user, vACC $vACC)
+    public function delete(User $user, FlightInformationRegion $flightInformationRegion)
     {
         return in_array($user->role->key, [RoleKey::SYS]);
     }
@@ -81,10 +81,10 @@ class VACCPolicy
      * Determine whether the user can restore the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\vACC  $vACC
+     * @param  \App\Models\FlightInformationRegion  $flightInformationRegion
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function restore(User $user, vACC $vACC)
+    public function restore(User $user, FlightInformationRegion $flightInformationRegion)
     {
         //
     }
@@ -93,10 +93,10 @@ class VACCPolicy
      * Determine whether the user can permanently delete the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\vACC  $vACC
+     * @param  \App\Models\FlightInformationRegion  $flightInformationRegion
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function forceDelete(User $user, vACC $vACC)
+    public function forceDelete(User $user, FlightInformationRegion $flightInformationRegion)
     {
         //
     }

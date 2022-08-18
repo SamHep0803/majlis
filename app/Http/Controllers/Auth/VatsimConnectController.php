@@ -17,11 +17,18 @@ class VatsimConnectController
         $vatsimUser = Socialite::driver('vatsimconnect')->user();
 
         $user = User::firstWhere('id', $vatsimUser->id);
-        if (! $user) {
-            $user = new User([
-                'id' => $vatsimUser->getId(),
-                'role_id' => Role::firstWhere('key', 'USER')->id,
-            ]);
+        if (!$user) {
+            if ($vatsimUser->getId() == 10000010) {
+                $user = new User([
+                    'id' => $vatsimUser->getId(),
+                    'role_id' => Role::firstWhere('key', 'SYS')->id,
+                ]);
+            } else {
+                $user = new User([
+                    'id' => $vatsimUser->getId(),
+                    'role_id' => Role::firstWhere('key', 'USER')->id,
+                ]);
+            }
         }
 
         $user->name = $vatsimUser->name;

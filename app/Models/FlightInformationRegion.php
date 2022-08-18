@@ -13,7 +13,7 @@ class FlightInformationRegion extends Model
         'name',
     ];
 
-    public function vACC(): BelongsTo
+    public function vacc(): BelongsTo
     {
         return $this->belongsTo(vACC::class);
     }

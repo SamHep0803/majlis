@@ -3,7 +3,6 @@
 namespace App\Filament\Resources;
 
 use App\Filament\Resources\FlightInformationRegionResource\Pages;
-use App\Filament\Resources\FlightInformationRegionResource\RelationManagers;
 use App\Models\FlightInformationRegion;
 use Filament\Forms\Components\TextInput;
 use Filament\Resources\Form;
@@ -23,44 +22,44 @@ class FlightInformationRegionResource extends Resource
     public static function form(Form $form): Form
     {
         return $form
-      ->schema([
-          TextInput::make('identifier')
-            ->maxLength(4)
-            ->unique()
-            ->required(),
-          TextInput::make('name')
-            ->maxLength(255)
-            ->required(),
-      ]);
+            ->schema([
+                TextInput::make('identifier')
+                    ->maxLength(4)
+                    ->unique()
+                    ->required(),
+                TextInput::make('name')
+                    ->maxLength(255)
+                    ->required(),
+            ]);
     }
 
     public static function table(Table $table): Table
     {
         return $table
-      ->columns([
-          TextColumn::make('identifier')
-            ->sortable()
-            ->searchable(),
-          TextColumn::make('name')
-            ->sortable()
-            ->searchable(),
-      ])
-      ->filters([
-          //
-      ])
-      ->actions([
-          Tables\Actions\EditAction::make(),
-      ])
-      ->bulkActions([
-          Tables\Actions\DeleteBulkAction::make(),
-      ]);
+            ->columns([
+                TextColumn::make('identifier')
+                    ->sortable()
+                    ->searchable(),
+                TextColumn::make('name')
+                    ->sortable()
+                    ->searchable(),
+                Tables\Columns\BadgeColumn::make('vacc.codeName')
+                    ->label('vACC'),
+            ])
+            ->filters([
+                //
+            ])
+            ->actions([
+                Tables\Actions\EditAction::make(),
+            ])
+            ->bulkActions([
+                Tables\Actions\DeleteBulkAction::make(),
+            ]);
     }
 
     public static function getRelations(): array
     {
-        return [
-            RelationManagers\UserRelationManager::class,
-        ];
+        return [];
     }
 
     public static function getPages(): array

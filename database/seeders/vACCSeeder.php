@@ -3,9 +3,8 @@
 namespace Database\Seeders;
 
 use App\Models\vACC;
-use function array_push;
 use GuzzleHttp\Client;
-use function GuzzleHttp\json_decode;
+use GuzzleHttp\Utils;
 use Illuminate\Database\Seeder;
 
 class vACCSeeder extends Seeder
@@ -20,7 +19,7 @@ class vACCSeeder extends Seeder
         $client = new Client();
         $vACCsQuery = $client->get('https://api.vatsim.net/api/subdivisions/');
         $allvACCs = $vACCsQuery->getBody();
-        $allvACCs = json_decode($allvACCs, true);
+        $allvACCs = Utils::jsonDecode($allvACCs, true);
         // $menavACCs = [];
         // foreach ($allvACCs as $vACC) {
         //     if ($vACC['parentdivision'] == 'MENA') {
@@ -28,8 +27,14 @@ class vACCSeeder extends Seeder
         //     }
         // }
 
+        vACC::create([
+            'code' => 'OSK',
+            'name' => 'OpenSkies',
+            'isMENA' => true
+        ]);
+
         foreach ($allvACCs as $vACC) {
-            $newvACC = new vACC;
+            $newvACC = new vACC();
             $newvACC->code = $vACC['code'];
             $newvACC->name = $vACC['fullname'];
             if ($vACC['parentdivision'] == 'MENA') {
