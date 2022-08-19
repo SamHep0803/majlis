@@ -32,7 +32,7 @@ class Provider extends AbstractProvider
      */
     protected function getAuthUrl($state)
     {
-        return $this->buildAuthUrlFromBase($this->getVatsimConnectUrl().'/oauth/authorize', $state);
+        return $this->buildAuthUrlFromBase($this->getVatsimConnectUrl() . '/oauth/authorize', $state);
     }
 
     /**
@@ -40,7 +40,7 @@ class Provider extends AbstractProvider
      */
     protected function getTokenUrl()
     {
-        return $this->getVatsimConnectUrl().'/oauth/token';
+        return $this->getVatsimConnectUrl() . '/oauth/token';
     }
 
     /**
@@ -48,9 +48,9 @@ class Provider extends AbstractProvider
      */
     protected function getUserByToken($token)
     {
-        $response = $this->getHttpClient()->get($this->getVatsimConnectUrl().'/api/user', [
+        $response = $this->getHttpClient()->get($this->getVatsimConnectUrl() . '/api/user', [
             'headers' => [
-                'Authorization' => 'Bearer '.$token,
+                'Authorization' => 'Bearer ' . $token,
             ],
         ]);
 
@@ -66,6 +66,9 @@ class Provider extends AbstractProvider
             'id' => $user['data']['cid'],
             'name' => $user['data']['personal']['name_full'] ?? null,
             'vacc_code' => $user['data']['vatsim']['subdivision']['id'],
+            'rating_short' => $user['data']['vatsim']['rating']['short'],
+            'rating_long' => $user['data']['vatsim']['rating']['long'],
+            'division' => $user['data']['vatsim']['division']['id'],
         ]);
     }
 
